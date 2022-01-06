@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../math/matrix.h"
+#include "math/matrix.h"
 
 #define ROWS     10
 #define COLS     10
