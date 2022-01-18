@@ -1,25 +1,24 @@
-#include "math/math.h"
+#include "math/matrix.h"
+#include "math/load.h"
 #include "time/time.h"
 
 int main(void) {
-    Timer timerA("A");
-    Timer timerB("B");
+    Timer timer("Multiplication Time");
 
-    timerA.start();
-    Matrix<int> a(3, 2);
-    timerA.stop();
-    timerA.print();
-    std::cout << "Matrix A:" << std::endl;
-    a.print();
+    Matrix<float> a(1000, 1000, true);
+    a = loadMatrixFromFile<float>("/home/johny/neural-network/examples/m1000x1000/matrixA.tabseparated");
+    //std::cout << "Matrix A:" << std::endl;
+    //a.print();
 
-    timerB.start();
-    Matrix<int> b(2, 3);
-    timerB.stop();
-    timerB.print();
-    std::cout << "Matrix B:" << std::endl;
-    b.print();
+    Matrix<float> b(1000, 1000, true);
+    b = loadMatrixFromFile<float>("/home/johny/neural-network/examples/m1000x1000/matrixB.tabseparated");
+    //std::cout << "Matrix B:" << std::endl;
+    //b.print();
 
-    Matrix<int> c = matrix_multiplier(a, b);
-    std::cout << "Matrix C:" << std::endl;
-    c.print();
+    timer.start();
+    Matrix<float> c = matrixMultiplier(a, b);
+    timer.stop();
+    //std::cout << "Matrix C:" << std::endl;
+    //c.print();
+    timer.print();
 }
